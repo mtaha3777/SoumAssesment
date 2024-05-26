@@ -20,3 +20,4 @@ const Setting: React.FC = ({ navigation }): React.JSX.Element => {
 
 
 export default Setting;
+

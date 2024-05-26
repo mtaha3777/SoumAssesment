@@ -57,4 +57,5 @@ const Model: React.FC = ({ navigation }): React.JSX.Element => {
     );
 };
 
+
 export default Model;

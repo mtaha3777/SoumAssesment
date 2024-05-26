@@ -89,3 +89,4 @@ const MyTabBar: React.FC<MyTabBarProps> = ({ state, descriptors, navigation, sty
 };
 
 export default MyTabBar;
+

@@ -80,4 +80,5 @@ const Brands: React.FC = ({ route }): React.JSX.Element => {
     );
 };
 
+
 export default Brands;

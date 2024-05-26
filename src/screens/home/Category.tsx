@@ -63,4 +63,5 @@ const Category: React.FC = ({  route }): React.JSX.Element => {
     );
 };
 
+
 export default Category;

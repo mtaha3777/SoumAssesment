@@ -67,4 +67,5 @@ const Home: React.FC = ({ navigation }): React.JSX.Element => {
     );
 };
 
+
 export default Home;

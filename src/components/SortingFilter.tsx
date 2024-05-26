@@ -31,8 +31,13 @@ export const HorizontalTextSelection = ({text,onPress,id})=>{
     const [selected,setSelected] = useState(null)
 
     const onPressRow = (id)=>{
-        setSelected(id)
-        hideModalWithView()
+        if(selected) {
+            setSelected(null)
+        }else {
+            setSelected(id)
+        }
+        onPress ? onPress() : hideModalWithView()
+
     }
 
     return (<TouchableOpacity onPress={onPressRow} style={{
@@ -57,7 +62,7 @@ export const HorizontalTextSelection = ({text,onPress,id})=>{
     </TouchableOpacity>)
 }
 
-const VariantsFilter: React.FC<VariantsFilterProps> = ({
+const SortingFilter: React.FC<VariantsFilterProps> = ({
                                                  style,onPress
                                              }) => {
 
@@ -97,4 +102,4 @@ const VariantsFilter: React.FC<VariantsFilterProps> = ({
 
 
 
-export default VariantsFilter;
+export default SortingFilter;

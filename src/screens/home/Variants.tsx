@@ -14,10 +14,17 @@ import HeadPhonesCategory from "../../assets/HeadPhonesCategory.png";
 import {getCategoriesData, getModelsData} from "../../utils/helper";
 import SearchBar from "../../components/SearchBar";
 import {hideModalWithView, showModalWithView} from "../../components/ModalHandler";
-import VariantsFilter, {HorizontalTextSelection} from "../../components/VariantsFilter";
-
+import SortingFilter, {HorizontalTextSelection} from "../../components/SortingFilter";
+import {useSelector} from "react-redux";
+import VariantFilter from "../../components/VariantFilter";
 
 const Variants: React.FC = ({ navigation }): React.JSX.Element => {
+
+
+    const filters = useSelector((state) => state.ApplicationSlice.filters);
+
+    console.log("filters",filters)
+
     const [modelData,setModelData] = useState([])
 
     useEffect(()=>{
@@ -30,6 +37,7 @@ const Variants: React.FC = ({ navigation }): React.JSX.Element => {
             setModelData(data)
         },100)
     }
+
     return (
         <View style={{ flex: 1, backgroundColor: Colors.white, }}>
 
@@ -63,7 +71,7 @@ const Variants: React.FC = ({ navigation }): React.JSX.Element => {
             }}/>
             <TouchableOpacity onPress={()=>{
                 showModalWithView(()=>{
-                    return (<VariantsFilter/>)
+                    return (<SortingFilter/>)
                 })
             }} style={{
                 backgroundColor:Colors.ColdGray30,
@@ -80,6 +88,30 @@ const Variants: React.FC = ({ navigation }): React.JSX.Element => {
             </TouchableOpacity>
             </View>
 
+            <FlatList
+                style={{
+                    marginHorizontal:WP(5),
+                    marginTop:WP(5)
+                }}
+                horizontal={true} data={filters} renderItem={({item,index})=>{
+                return (<TouchableOpacity onPress={()=>{
+                    return (
+                        showModalWithView(()=>{
+                            return (<VariantFilter/>)
+                        })
+                    )
+                }} style={{
+                    backgroundColor:Colors.Greyscale200,
+                    borderRadius:WP(5),
+                    paddingHorizontal:WP(3),
+                }}>
+                        <Text style={[FontStyles.global_text_medium_regular(),{
+                            paddingVertical:WP(1),
+                            marginBottom:5
+                        }]}>{item?.name}</Text>
+                </TouchableOpacity>)
+            }}
+            />
             <FlatList
                 data={modelData}
                 renderItem={({ item, index }) => (

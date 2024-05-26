@@ -6,7 +6,7 @@ import ApplicationSlice from './slices/ApplicationSlice';
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['ApplicationSlice'], // Array of slice names to persist
+    whitelist: [], // Array of slice names to persist
     blacklist: [], // Array of slice names to exclude from storage
 };
 

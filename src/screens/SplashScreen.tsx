@@ -26,5 +26,4 @@ const SplashScreen: React.FC = ({ navigation }): React.JSX.Element => {
     );
 }
 
-
 export default SplashScreen;
